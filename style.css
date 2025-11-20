@@ -1,17 +1,8 @@
-@import "tailwindcss";
-
-
-
-
-
-
-
-html,
-body {
+html, body {
   scroll-behavior: smooth;
 }
 
-/* Hero Ring – Orange (works in both themes) */
+/* Hero Ring */
 .hero-ring {
   position: relative;
   width: 270px;
@@ -29,21 +20,19 @@ body {
   inset: 0;
   border-radius: inherit;
   padding: 1px;
-  background:
-    conic-gradient(
-      from 320deg,
-      rgba(255, 111, 0, 0) 0deg 40deg,
-      rgba(255, 111, 0, 1) 40deg 190deg,
-      rgba(255, 111, 0, 0) 190deg 230deg,
-      rgba(255, 111, 0, 1) 230deg 330deg,
-      rgba(255, 111, 0, 0) 330deg 360deg
-    );
+  background: conic-gradient(
+    from 320deg,
+    rgba(255, 111, 0, 0) 0deg 40deg,
+    rgba(255, 111, 0, 1) 40deg 190deg,
+    rgba(255, 111, 0, 0) 190deg 230deg,
+    rgba(255, 111, 0, 1) 230deg 330deg,
+    rgba(255, 111, 0, 0) 330deg 360deg
+  );
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   animation: spinArc 7s linear infinite;
 }
-
 
 .hero-ring-inner {
   position: relative;
@@ -58,7 +47,7 @@ body {
 
 @keyframes spinArc {
   from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
+  to { transform: rotate(360deg); }
 }
 
 /* Nav link underline */
@@ -66,7 +55,8 @@ body {
   position: relative;
 }
 
-.nav-link.active, .nav-link:hover {
+.nav-link.active,
+.nav-link:hover {
   color: #FF6F00 !important;
 }
 
@@ -80,4 +70,13 @@ body {
   height: 2px;
   background: #FF6F00;
   border-radius: 999px;
+}
+
+/* Focus outline for accessibility */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #FF6F00;
+  outline-offset: 2px;
 }

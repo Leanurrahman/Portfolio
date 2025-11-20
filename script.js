@@ -12,12 +12,12 @@ document.addEventListener("DOMContentLoaded", () => {
       backSpeed: 40,
       backDelay: 1600,
       loop: true,
+      showCursor: false
     });
   }
 
   // Footer year
-  const yearSpan = document.getElementById("year");
-  if (yearSpan) yearSpan.textContent = new Date().getFullYear();
+  document.getElementById("year").textContent = new Date().getFullYear();
 
   // Mobile menu
   const menuBtn = document.getElementById("menu-btn");
@@ -25,10 +25,8 @@ document.addEventListener("DOMContentLoaded", () => {
   let isMenuOpen = false;
 
   const toggleMenu = () => {
-    if (mobileMenu) {
-      mobileMenu.classList.toggle("hidden");
-      isMenuOpen = !isMenuOpen;
-    }
+    mobileMenu.classList.toggle("hidden");
+    isMenuOpen = !isMenuOpen;
   };
 
   if (menuBtn) {
@@ -53,22 +51,19 @@ document.addEventListener("DOMContentLoaded", () => {
   const html = document.getElementById("html-theme");
   const toggleBtn = document.getElementById("theme-toggle");
 
-  // Load saved theme
   const savedTheme = localStorage.getItem("theme") || "light";
   if (savedTheme === "dark") {
     html.classList.add("dark");
   }
 
-  // Toggle theme
   if (toggleBtn) {
     toggleBtn.addEventListener("click", () => {
       html.classList.toggle("dark");
-      const currentTheme = html.classList.contains("dark") ? "dark" : "light";
-      localStorage.setItem("theme", currentTheme);
+      localStorage.setItem("theme", html.classList.contains("dark") ? "dark" : "light");
     });
   }
 
-  // Active nav link on scroll
+  // Active nav on scroll
   const sections = document.querySelectorAll("section[id]");
   const navLinks = document.querySelectorAll(".nav-link");
 
