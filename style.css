@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+
+
+
+
+
+
+html,
+body {
+  scroll-behavior: smooth;
+}
+
+/* Hero Ring – Orange (works in both themes) */
+.hero-ring {
+  position: relative;
+  width: 270px;
+  height: 270px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-inline: auto;
+}
+
+.hero-ring::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background:
+    conic-gradient(
+      from 320deg,
+      rgba(255, 111, 0, 0) 0deg 40deg,
+      rgba(255, 111, 0, 1) 40deg 190deg,
+      rgba(255, 111, 0, 0) 190deg 230deg,
+      rgba(255, 111, 0, 1) 230deg 330deg,
+      rgba(255, 111, 0, 0) 330deg 360deg
+    );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: spinArc 7s linear infinite;
+}
+
+
+.hero-ring-inner {
+  position: relative;
+  width: 86%;
+  height: 86%;
+  border-radius: inherit;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes spinArc {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* Nav link underline */
+.nav-link {
+  position: relative;
+}
+
+.nav-link.active, .nav-link:hover {
+  color: #FF6F00 !important;
+}
+
+.nav-link.active::after,
+.nav-link:hover::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 18px;
+  height: 2px;
+  background: #FF6F00;
+  border-radius: 999px;
+}

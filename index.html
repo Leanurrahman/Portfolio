@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en" id="html-theme">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Leanur Rahman | Frontend Developer</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Tailwind Config -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FF6F00',
+            darkBg: '#0f172a',
+            darkCard: '#1e293b'
+          },
+          fontFamily: {
+            sans: ['Poppins', 'system-ui', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    html, body {
+      scroll-behavior: smooth;
+    }
+
+    /* Hero Ring */
+    .hero-ring {
+      position: relative;
+      width: 270px;
+      height: 270px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-inline: auto;
+    }
+
+    .hero-ring::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1px;
+      background: conic-gradient(
+        from 320deg,
+        rgba(255, 111, 0, 0) 0deg 40deg,
+        rgba(255, 111, 0, 1) 40deg 190deg,
+        rgba(255, 111, 0, 0) 190deg 230deg,
+        rgba(255, 111, 0, 1) 230deg 330deg,
+        rgba(255, 111, 0, 0) 330deg 360deg
+      );
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      animation: spinArc 7s linear infinite;
+    }
+
+    .hero-ring-inner {
+      position: relative;
+      width: 86%;
+      height: 86%;
+      border-radius: inherit;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @keyframes spinArc {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    /* Nav link underline */
+    .nav-link {
+      position: relative;
+    }
+
+    .nav-link.active,
+    .nav-link:hover {
+      color: #FF6F00 !important;
+    }
+
+    .nav-link.active::after,
+    .nav-link:hover::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 18px;
+      height: 2px;
+      background: #FF6F00;
+      border-radius: 999px;
+    }
+  </style>
+</head>
+
+<body class="bg-white text-gray-900 font-sans dark:bg-darkBg dark:text-gray-100" id="body-theme">
+  <!-- NAVBAR -->
+  <nav class="fixed w-full top-0 left-0 z-20 bg-white/90 dark:bg-darkBg/90 backdrop-blur border-b border-orange-100 dark:border-slate-700">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <div class="flex items-center space-x-2">
+        <span class="text-2xl font-bold"><span class="text-primary">Port</span>folio<span class="text-primary">.</span></span>
+      </div>
+
+      <ul class="hidden md:flex space-x-8 text-sm font-medium">
+        <li><a href="#home" class="nav-link text-primary font-semibold dark:text-primary">Home</a></li>
+        <li><a href="#about" class="nav-link hover:text-primary dark:hover:text-primary">About</a></li>
+        <li><a href="#portfolio" class="nav-link hover:text-primary dark:hover:text-primary">Portfolio</a></li>
+        <li><a href="#services" class="nav-link hover:text-primary dark:hover:text-primary">Services</a></li>
+        <li><a href="#contact" class="nav-link hover:text-primary dark:hover:text-primary">Contact</a></li>
+      </ul>
+
+      <div class="flex items-center gap-3">
+        <button id="theme-toggle" class="w-9 h-9 rounded-full border border-primary flex items-center justify-center hover:bg-primary/10 dark:hover:bg-primary/20 transition">
+          <i class="fas fa-sun text-primary text-sm dark:hidden"></i>
+          <i class="fas fa-moon text-primary text-sm hidden dark:block"></i>
+        </button>
+
+        <button id="menu-btn" class="md:hidden w-9 h-9 rounded-full border border-gray-300 dark:border-slate-600 flex items-center justify-center text-gray-700 dark:text-gray-300">
+          <i class="fas fa-bars text-lg"></i>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobile-menu" class="md:hidden hidden bg-white dark:bg-darkBg border-t border-orange-100 dark:border-slate-700">
+      <ul class="flex flex-col px-4 py-3 space-y-2 text-sm font-medium">
+        <li><a href="#home" class="nav-link block py-2 text-primary dark:text-primary">Home</a></li>
+        <li><a href="#about" class="nav-link block py-2 hover:text-primary dark:hover:text-primary">About</a></li>
+        <li><a href="#portfolio" class="nav-link block py-2 hover:text-primary dark:hover:text-primary">Portfolio</a></li>
+        <li><a href="#services" class="nav-link block py-2 hover:text-primary dark:hover:text-primary">Services</a></li>
+        <li><a href="#contact" class="nav-link block py-2 hover:text-primary dark:hover:text-primary">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="home" class="pt-28 pb-20 md:pt-32 md:pb-24">
+    <div class="max-w-6xl mx-auto px-4 flex flex-col-reverse md:flex-row items-center gap-12">
+      <div class="md:w-1/2 space-y-5">
+        <p class="uppercase tracking-[0.3em] text-xs text-primary/80 dark:text-primary/70">Welcome to my portfolio</p>
+        <h1 class="text-4xl md:text-5xl font-bold leading-tight">
+          Hi, I'm <span class="text-primary">Leanur Rahman</span>
+        </h1>
+        <h2 class="text-2xl md:text-3xl font-semibold text-primary">
+          <span id="typed-text"></span>
+        </h2>
+        <p class="text-sm md:text-base text-gray-700 dark:text-gray-300 max-w-xl">
+          I’m a frontend developer and CSE student who loves creating clean, modern, and responsive user interfaces.
+          I enjoy turning ideas into interactive web experiences.
+        </p>
+        <div class="flex flex-wrap items-center gap-4 mt-4">
+          <a href="https://drive.google.com/uc?export=download&id=YOUR_FILE_ID"
+             target="_blank"
+             class="px-7 py-3 bg-primary text-white rounded-full text-sm font-semibold flex items-center gap-2 hover:bg-orange-600 transition shadow-md">
+            <i class="fa-solid fa-download"></i> Download CV
+          </a>
+          <div class="flex items-center gap-3">
+            <a href="https://www.facebook.com/share/1EdqkvJGwG/" target="_blank" class="w-9 h-9 rounded-full bg-gray-100 dark:bg-slate-700 flex items-center justify-center text-gray-700 dark:text-gray-300 hover:bg-orange-100 hover:text-primary dark:hover:bg-primary/20 dark:hover:text-primary transition">
+              <i class="fab fa-facebook-f text-sm"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/leanur-rahman-139152328/" target="_blank" class="w-9 h-9 rounded-full bg-gray-100 dark:bg-slate-700 flex items-center justify-center text-gray-700 dark:text-gray-300 hover:bg-orange-100 hover:text-primary dark:hover:bg-primary/20 dark:hover:text-primary transition">
+              <i class="fab fa-linkedin-in text-sm"></i>
+            </a>
+            <a href="https://www.youtube.com/@letslearntogether9-p6p" target="_blank" class="w-9 h-9 rounded-full bg-gray-100 dark:bg-slate-700 flex items-center justify-center text-gray-700 dark:text-gray-300 hover:bg-orange-100 hover:text-primary dark:hover:bg-primary/20 dark:hover:text-primary transition">
+              <i class="fab fa-youtube text-sm"></i>
+            </a>
+            <a href="https://github.com/Leanurrahman" target="_blank" class="w-9 h-9 rounded-full bg-gray-100 dark:bg-slate-700 flex items-center justify-center text-gray-700 dark:text-gray-300 hover:bg-orange-100 hover:text-primary dark:hover:bg-primary/20 dark:hover:text-primary transition">
+              <i class="fab fa-github text-sm"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-ring">
+        <div class="hero-ring-inner">
+          <img
+            src="l.jpg"
+            alt="Profile"
+            class="w-full h-full object-cover"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="py-16 border-t border-orange-100 dark:border-slate-700">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-10 text-center">About Me</h2>
+      <div class="grid md:grid-cols-2 gap-10 items-center">
+        <div>
+          <p class="text-gray-700 dark:text-gray-300 text-sm md:text-base leading-relaxed">
+            I am a 5th-semester CSE student at International Islamic University Chittagong.
+            My focus is on modern frontend development using HTML, CSS, Tailwind CSS, and JavaScript.
+          </p>
+          <p class="text-gray-700 dark:text-gray-300 text-sm md:text-base mt-4 leading-relaxed">
+            I love building responsive layouts, smooth animations, and pixel-perfect components.
+            I’m currently looking for internship opportunities (remote or on-site) where I can contribute and grow.
+          </p>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="bg-white dark:bg-darkCard p-4 rounded-lg shadow border border-orange-100 dark:border-slate-700 text-center">
+            <p class="text-3xl font-bold text-primary">10+</p>
+            <p class="text-xs text-gray-600 dark:text-gray-400 mt-1">Personal Projects</p>
+          </div>
+          <div class="bg-white dark:bg-darkCard p-4 rounded-lg shadow border border-orange-100 dark:border-slate-700 text-center">
+            <p class="text-3xl font-bold text-primary">2+</p>
+            <p class="text-xs text-gray-600 dark:text-gray-400 mt-1">Years Learning</p>
+          </div>
+          <div class="bg-white dark:bg-darkCard p-4 rounded-lg shadow border border-orange-100 dark:border-slate-700 text-center">
+            <p class="text-3xl font-bold text-primary">5+</p>
+            <p class="text-xs text-gray-600 dark:text-gray-400 mt-1">Technologies</p>
+          </div>
+          <div class="bg-white dark:bg-darkCard p-4 rounded-lg shadow border border-orange-100 dark:border-slate-700 text-center">
+            <p class="text-3xl font-bold text-primary">∞</p>
+            <p class="text-xs text-gray-600 dark:text-gray-400 mt-1">Curiosity</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section id="portfolio" class="py-16 border-t border-orange-100 dark:border-slate-700">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-10 text-center">My Projects</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <!-- Project 1 -->
+        <div class="bg-white dark:bg-darkCard rounded-xl shadow border border-orange-100 dark:border-slate-700 overflow-hidden">
+          <div class="aspect-video w-full bg-gray-100 dark:bg-slate-800 overflow-hidden">
+            <img src="p.jpg" alt="Personal Portfolio" class="w-full h-full object-cover" />
+          </div>
+          <div class="p-4 space-y-2">
+            <h3 class="font-semibold dark:text-white">Personal Portfolio</h3>
+            <p class="text-xs text-gray-600 dark:text-gray-400">
+              A responsive portfolio website built using HTML, Tailwind CSS, and JavaScript.
+            </p>
+            <div class="flex gap-3 text-xs">
+              <a href="#" class="text-primary hover:underline font-medium">Live Demo</a>
+              <a href="#" class="text-primary hover:underline font-medium">Source Code</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="bg-white dark:bg-darkCard rounded-xl shadow border border-orange-100 dark:border-slate-700 overflow-hidden">
+          <div class="aspect-video w-full bg-gray-100 dark:bg-slate-800 overflow-hidden">
+            <img src="i1.jpg" alt="IIUC CGPA Buddy" class="w-full h-full object-cover" />
+          </div>
+          <div class="p-4 space-y-2">
+            <h3 class="font-semibold dark:text-white">🎓 IIUC CGPA Buddy</h3>
+            <p class="text-xs text-gray-600 dark:text-gray-400">
+              A simple Student-focused utility app to make university life easier.
+            </p>
+            <div class="flex gap-3 text-xs">
+              <a href="https://69198f251149262ccb691eeb--capable-baklava-c9780f.netlify.app/" class="text-primary hover:underline font-medium">Live Demo</a>
+              <a href="#" class="text-primary hover:underline font-medium">Source Code</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="bg-white dark:bg-darkCard rounded-xl shadow border border-orange-100 dark:border-slate-700 overflow-hidden">
+          <div class="aspect-video w-full bg-gray-100 dark:bg-slate-800 overflow-hidden">
+            <img src="g.jpg" alt="Landing Page" class="w-full h-full object-cover" />
+          </div>
+          <div class="p-4 space-y-2">
+            <h3 class="font-semibold dark:text-white">🍔Food Delivery Web Application</h3>
+            <p class="text-xs text-gray-600 dark:text-gray-400">
+              Responsive frontend for an online food ordering platform.
+            </p>
+            <div class="flex gap-3 text-xs">
+              <a href="#" class="text-primary hover:underline font-medium">Live Demo</a>
+              <a href="#" class="text-primary hover:underline font-medium">Source Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="py-16 border-t border-orange-100 dark:border-slate-700">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-10 text-center">Services</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-white dark:bg-darkCard p-6 rounded-xl shadow text-center border border-orange-100 dark:border-slate-700">
+          <i class="fa-solid fa-code text-2xl text-primary mb-3"></i>
+          <h3 class="font-semibold mb-1 dark:text-white">Frontend Development</h3>
+          <p class="text-xs text-gray-600 dark:text-gray-400">
+            Building responsive, semantic, and accessible user interfaces with modern tech.
+          </p>
+        </div>
+        <div class="bg-white dark:bg-darkCard p-6 rounded-xl shadow text-center border border-orange-100 dark:border-slate-700">
+          <i class="fa-solid fa-paintbrush text-2xl text-primary mb-3"></i>
+          <h3 class="font-semibold mb-1 dark:text-white">UI Implementation</h3>
+          <p class="text-xs text-gray-600 dark:text-gray-400">
+            Converting Figma / XD designs into pixel-perfect web layouts.
+          </p>
+        </div>
+        <div class="bg-white dark:bg-darkCard p-6 rounded-xl shadow text-center border border-orange-100 dark:border-slate-700">
+          <i class="fa-solid fa-mobile-screen-button text-2xl text-primary mb-3"></i>
+          <h3 class="font-semibold mb-1 dark:text-white">Responsive Design</h3>
+          <p class="text-xs text-gray-600 dark:text-gray-400">
+            Ensuring your website looks great on mobile, tablet, and desktop.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="py-16 border-t border-orange-100 dark:border-slate-700">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-6 text-center">Contact</h2>
+      <p class="text-gray-700 dark:text-gray-300 text-sm md:text-base max-w-2xl mx-auto text-center mb-8">
+        Interested in working together or offering an internship? Feel free to reach out!
+      </p>
+      <form action="#" method="POST" class="grid md:grid-cols-2 gap-4">
+        <input
+          type="text"
+          name="name"
+          placeholder="Your Name"
+          class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-slate-600 bg-white dark:bg-darkCard text-gray-900 dark:text-white focus:border-primary focus:ring-2 focus:ring-orange-100 outline-none transition"
+          required
+        />
+        <input
+          type="email"
+          name="email"
+          placeholder="Your Email"
+          class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-slate-600 bg-white dark:bg-darkCard text-gray-900 dark:text-white focus:border-primary focus:ring-2 focus:ring-orange-100 outline-none transition"
+          required
+        />
+        <input
+          type="text"
+          name="subject"
+          placeholder="Subject"
+          class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-slate-600 bg-white dark:bg-darkCard text-gray-900 dark:text-white focus:border-primary focus:ring-2 focus:ring-orange-100 outline-none transition md:col-span-2"
+        />
+        <textarea
+          name="message"
+          rows="4"
+          placeholder="Your Message"
+          class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-slate-600 bg-white dark:bg-darkCard text-gray-900 dark:text-white focus:border-primary focus:ring-2 focus:ring-orange-100 outline-none transition resize-none md:col-span-2"
+          required
+        ></textarea>
+        <button
+          type="submit"
+          class="md:col-span-2 w-full py-3 bg-primary text-white font-semibold rounded-full hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-400 transition flex items-center justify-center gap-2 shadow-md"
+        >
+          <i class="fa-solid fa-paper-plane"></i> Send Message
+        </button>
+      </form>
+      <div class="text-center mt-6 text-sm text-gray-700 dark:text-gray-300">
+        <p>You can also email me directly:</p>
+        <a href="mailto:your.email@example.com" class="text-primary font-semibold hover:underline">
+          your.email@example.com
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-orange-100 dark:border-slate-700 py-6 text-center text-xs text-gray-500 dark:text-gray-400">
+    © <span id="year"></span> Leanur Rahman. All rights reserved.
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Typed.js
+      if (window.Typed) {
+        new Typed("#typed-text", {
+          strings: [
+            "I'm a Frontend Developer.",
+            "I build modern web UIs.",
+            "I love Tailwind CSS & JS.",
+            "Open to internship offers."
+          ],
+          typeSpeed: 60,
+          backSpeed: 40,
+          backDelay: 1600,
+          loop: true,
+          showCursor: false
+        });
+      }
+
+      // Footer year
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      // Mobile menu
+      const menuBtn = document.getElementById("menu-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+      let isMenuOpen = false;
+
+      const toggleMenu = () => {
+        mobileMenu.classList.toggle("hidden");
+        isMenuOpen = !isMenuOpen;
+      };
+
+      menuBtn?.addEventListener("click", toggleMenu);
+      mobileMenu?.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", () => {
+          if (isMenuOpen) toggleMenu();
+        });
+      });
+
+      window.addEventListener("resize", () => {
+        if (window.innerWidth >= 768 && isMenuOpen) {
+          toggleMenu();
+        }
+      });
+
+      // Theme toggle
+      const html = document.getElementById("html-theme");
+      const toggleBtn = document.getElementById("theme-toggle");
+
+      const savedTheme = localStorage.getItem("theme") || "light";
+      if (savedTheme === "dark") {
+        html.classList.add("dark");
+      }
+
+      toggleBtn?.addEventListener("click", () => {
+        html.classList.toggle("dark");
+        localStorage.setItem("theme", html.classList.contains("dark") ? "dark" : "light");
+      });
+
+      // Active nav on scroll
+      const sections = document.querySelectorAll("section[id]");
+      const navLinks = document.querySelectorAll(".nav-link");
+
+      const onScroll = () => {
+        const scrollPos = window.scrollY + 120;
+        sections.forEach(section => {
+          const top = section.offsetTop;
+          const height = section.offsetHeight;
+          const id = section.getAttribute("id");
+          if (scrollPos >= top && scrollPos < top + height) {
+            navLinks.forEach(link => {
+              link.classList.remove("active");
+              if (link.getAttribute("href") === `#${id}`) {
+                link.classList.add("active");
+              }
+            });
+          }
+        });
+      };
+
+      window.addEventListener("scroll", onScroll);
+      onScroll();
+    });
+  </script>
+</body>
+</html>
